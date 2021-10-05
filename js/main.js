@@ -3,7 +3,7 @@ new Vue({
     data: {
         push: {
             current: 0,
-            capacity: 15,
+            capacity: 0,
             skills: [{
                 difficulty: 0,
                 name: 'Incline Push Up',
@@ -35,6 +35,10 @@ new Vue({
                 default:
                     return ''
             }
+        },
+        incrementSkill(p) {
+            this[p.category].current += Number.parseFloat(p.value)
+            this[p.category].capacity += Number.parseFloat(p.cost)
         }
     }
 })
