@@ -27,7 +27,7 @@
                                 <dd><code>{{ push.current }}</code></dd>
                             </dl>
                             <h4 class="title is-6 mt-5 mb-1">Fatigue</h4>
-                            <progress class="progress"  :class="fatigueClass(70)" value="70" max="100">90%</progress>
+                            <progress class="progress"  :class="fatigueClass(push.capacity)" :value="push.capacity" max="100">90%</progress>
                         </div>
                         <div class="column">
                             <h3 class="title is-5">Pull</h3>
@@ -80,11 +80,19 @@
                     <button class="button is-warning is-rounded" @click="push.current += 5.5">Ring One Arm Push Up</button>
                     <button class="button is-warning is-rounded" @click="push.current += 6.5">Ring Wall Maltese Push Up</button>
                     <button class="button is-danger is-rounded" @click="push.current += 10">Ring Planche Push Up</button>
+                    <skill-button category="push"
+                        index="0"
+                        level="is-primary" 
+                        name="Incline Push Up" 
+                        value="0.5" 
+                        cost="10"
+                        @increment-skill="incrementSkill"></skill-button>
                 </div>
             </div>
         </section>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="js/components/SkillButton.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
