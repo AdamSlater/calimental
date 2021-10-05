@@ -19,46 +19,30 @@
                     <h2 class="title is-4">Stats</h2>
                     <div class="columns">
                         <div class="column">
-                            <h3 class="title is-5">Push</h3>
-                            <dl>
-                                <dt>Max Skill</dt>
-                                <dd><code>push-up</code></dd>
-                                <dt>Total Points</dt>
-                                <dd><code>{{ push.current }}</code></dd>
-                            </dl>
+                            <skill-details category="Push"
+                                skill="push-up"
+                                :points="push.current"></skill-details>
                             <h4 class="title is-6 mt-5 mb-1">Fatigue</h4>
                             <progress class="progress"  :class="fatigueClass(push.capacity)" :value="push.capacity" max="100">90%</progress>
                         </div>
                         <div class="column">
-                            <h3 class="title is-5">Pull</h3>
-                            <dl>
-                                <dt>Max Skill</dt>
-                                <dd><code>pull-up</code></dd>
-                                <dt>Total Points</dt>
-                                <dd><code>10</code></dd>
-                            </dl>
+                            <skill-details category="Pull"
+                                skill="pull-up"
+                                points="10"></skill-details>
                             <h4 class="title is-6 mt-5 mb-1">Fatigue</h4>
                             <progress class="progress" :class="fatigueClass(42)" value="42" max="100">90%</progress>
                         </div>
                         <div class="column">
-                            <h3 class="title is-5">Legs</h3>
-                            <dl>
-                                <dt>Max Skill</dt>
-                                <dd><code>squat</code></dd>
-                                <dt>Total Points</dt>
-                                <dd><code>10</code></dd>
-                            </dl>
+                            <skill-details category="legs"
+                                skill="squat"
+                                points="10"></skill-details>
                             <h4 class="title is-6 mt-5 mb-1">Fatigue</h4>
                             <progress class="progress" :class="fatigueClass(90)" value="90" max="100">90%</progress>
                         </div>
                         <div class="column">
-                            <h3 class="title is-5">Core</h3>
-                            <dl>
-                                <dt>Max Skill</dt>
-                                <dd><code>plank</code></dd>
-                                <dt>Total Points</dt>
-                                <dd><code>10</code></dd>
-                            </dl>
+                            <skill-details category="core"
+                                skill="plank"
+                                points="10"></skill-details>
                             <h4 class="title is-6 mt-5 mb-1">Fatigue</h4>
                             <progress class="progress" :class="fatigueClass(100)"  value="100" max="100">90%</progress>
                         </div>
@@ -93,6 +77,7 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="js/components/SkillButton.js"></script>
+    <script src="js/components/SkillDetails.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
