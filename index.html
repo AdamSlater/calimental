@@ -54,6 +54,15 @@
                         <li><a>Pull</a></li>
                         <li><a>Core</a></li>
                         <li><a>Legs</a></li>
+                        <router-link to="/foo" tag="li"><a>Foo</a></router-link>
+                        <router-link to="/bar" tag="li"><a>Bar</a></router-link>
+                        <router-link to="/baz"
+                            v-slot="{ href, route, navigate, isActive }"
+                            custom>
+                            <li :class="[isActive && 'is-active']">
+                                <a :href="href" @click="navigate">Baz</a>
+                            </li>
+                        </router-link>
                     </ul>
                 </div>
                 <div class="vertical-button-group">
@@ -72,12 +81,15 @@
                         cost="10"
                         @increment-skill="incrementSkill"></skill-button>
                 </div>
+                <hr>
+                <router-view></router-view>
             </div>
         </section>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.5.2/dist/vue-router.js"></script>
     <script src="js/components/SkillButton.js"></script>
     <script src="js/components/SkillDetails.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/main.js" type="module"></script>
 </body>
 </html>

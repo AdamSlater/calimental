@@ -1,5 +1,21 @@
-new Vue({
+const Foo = { template: '<div>foo</div>' }
+const Bar = { template: '<div>bar</div>' }
+const Baz = { template: '<div>baz</div>' }
+
+const routes = [
+    { path: '/foo', component: Foo },
+    { path: '/bar', component: Bar },
+    { path: '/baz', component: Baz }
+]
+  
+const router = new VueRouter({
+    routes,
+    linkActiveClass: 'is-active'
+})
+
+const app = new Vue({
     el: '#root',
+    router,
     data: {
         push: {
             current: 0,
