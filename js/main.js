@@ -1,11 +1,8 @@
-const Foo = { template: '<div>foo</div>' }
-const Bar = { template: '<div>bar</div>' }
-const Baz = { template: '<div>baz</div>' }
-
 const routes = [
-    { path: '/foo', component: Foo },
-    { path: '/bar', component: Bar },
-    { path: '/baz', component: Baz }
+    { path: '/push', component: pushLayout },
+    { path: '/pull', component: pullLayout },
+    { path: '/legs', component: legsLayout },
+    { path: '/core', component: coreLayout }
 ]
   
 const router = new VueRouter({
