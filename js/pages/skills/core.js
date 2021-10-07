@@ -1,20 +1,16 @@
 const coreLayout = {
     template: `
     <div class="vertical-button-group">
-    <button class="button is-primary is-rounded" @click="push.current += .5">Incline Push Up</button>
-    <button class="button is-primary is-rounded" @click="push.current += 1">Push Up</button>
-    <button class="button is-primary is-rounded" @click="push.current += 1.5">Diamond Push Up</button>
-    <button class="button is-info is-rounded" @click="push.current += 5">Incline One Arm Push Up</button>
-    <button class="button is-warning is-rounded" @click="push.current += 5.5">Ring One Arm Push Up</button>
-    <button class="button is-warning is-rounded" @click="push.current += 6.5">Ring Wall Maltese Push Up</button>
-    <button class="button is-danger is-rounded" @click="push.current += 10">Ring Planche Push Up</button>
-    <skill-button category="push"
-        index="0"
-        level="is-primary" 
-        name="Incline Push Up" 
-        value="0.5" 
-        cost="10"
-        @increment-skill="incrementSkill"></skill-button>
+        <button class="button is-primary is-rounded" @click="core.current += .5">Plank</button>
+        <button class="button is-primary is-rounded" @click="core.current += 1">One Arm Plank</button>
+        <button class="button is-primary is-rounded" @click="core.current += 1.5">One Arm One Leg Plank</button>
+        <button class="button is-info is-rounded" @click="core.current += 5">Ring Ab Rollout</button>
+        <button class="button is-info is-rounded" @click="core.current += 5.5">Kneeling Ab Wheel</button>
+        <button class="button is-info is-rounded" @click="core.current += 6.5">Straight Leg Ab Wheel Ramp</button>
+        <button class="button is-info is-rounded" @click="core.current += 10">Straight Leg Ab Wheel Negative</button>
+        <button class="button is-info is-rounded" @click="core.current += 10">Straight Leg Ab Wheel</button>
+        <button class="button is-warning is-rounded" @click="core.current += 10">Weighted Ab Wheel</button>
+        <button class="button is-warning is-rounded" @click="core.current += 10">One Arm Ab Wheel</button>
     </div>
     `,
     methods: {
