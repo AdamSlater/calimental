@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="vertical-button-group" v-if="$route.params.skill == 'push'">
-      <button class="button is-primary is-rounded" @click="push.current += 0.5">
+      <!-- <button class="button is-primary is-rounded" @click="push.current += 0.5">
         Incline Push Up
       </button>
       <button class="button is-primary is-rounded" @click="push.current += 1">
@@ -30,7 +30,14 @@
         value="0.5"
         cost="10"
         @increment-skill="incrementSkill"
-      ></skill-button>
+      ></skill-button> -->
+      <button
+        class="button is-rounded"
+        :class="skillClass(skill.difficulty)"
+        v-for="skill in pushSkills"
+        v-text="skill.name"
+        :key="skill.index"
+      ></button>
     </div>
     <div class="vertical-button-group" v-if="$route.params.skill == 'pull'">
       <button class="button is-primary is-rounded" @click="pull.current += 0.5">
@@ -135,16 +142,39 @@
 </template>
 
 <script>
-import skillButton from "../components/SkillButton.vue";
+// import skillButton from "../components/SkillButton.vue";
 
 export default {
   components: {
-    skillButton,
+    // skillButton,
+  },
+  data() {
+    return {
+      pushSkills: [],
+    };
   },
   methods: {
     incrementSkill() {
-      alert("increment");
+      // alert("increment");
+      // console.log(this.$store.getters.push);
     },
+    skillClass(difficulty) {
+      switch (difficulty) {
+        case "Beginner":
+          return "is-success";
+        case "Intermediate":
+          return "is-info";
+        case "Advanced":
+          return "is-warning";
+        case "Elite":
+          return "is-danger";
+        default:
+          return "";
+      }
+    },
+  },
+  mounted() {
+    this.pushSkills = this.$store.getters.push;
   },
 };
 </script>
