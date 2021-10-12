@@ -38,6 +38,15 @@
         v-text="skill.name"
         :key="skill.index"
       ></button>
+      <skill-button
+        category="push"
+        index="0"
+        level="is-primary"
+        name="Incline Push Up"
+        value="0.5"
+        cost="10"
+        @increment-skill="incrementSkill('push', 0.5, 10)"
+      ></skill-button>
     </div>
     <div class="vertical-button-group" v-if="$route.params.skill == 'pull'">
       <button class="button is-primary is-rounded" @click="pull.current += 0.5">
@@ -142,11 +151,11 @@
 </template>
 
 <script>
-// import skillButton from "../components/SkillButton.vue";
+import skillButton from "../components/SkillButton.vue";
 
 export default {
   components: {
-    // skillButton,
+    skillButton,
   },
   data() {
     return {
@@ -154,9 +163,21 @@ export default {
     };
   },
   methods: {
-    incrementSkill() {
-      // alert("increment");
-      // console.log(this.$store.getters.push);
+    addSkillPoints(category, points) {
+      this.$store.commit("addSkillPoints", {
+        category,
+        points,
+      });
+    },
+    applyFatigue(category, fatigue) {
+      this.$store.commit("applyFatigue", {
+        category,
+        fatigue,
+      });
+    },
+    incrementSkill(category, points, fatigue) {
+      this.addSkillPoints(category, points);
+      this.applyFatigue(category, fatigue);
     },
     skillClass(difficulty) {
       switch (difficulty) {

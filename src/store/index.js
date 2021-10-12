@@ -5,6 +5,13 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    user: {
+      push: {
+        totalPoints: 0,
+        fatigue: 0,
+        maxFatigue: 100,
+      },
+    },
     push: [
       {
         name: "Incline Push-Up",
@@ -102,10 +109,28 @@ export default new Vuex.Store({
         index: 11,
         difficulty: "Advanced",
       },
+      {
+        name: "Ring Wall Maltese Push-Up",
+        costPerClick: 10,
+        valuePerClick: 0.5,
+        path: 1,
+        index: 12,
+        difficulty: "Elite",
+      },
     ],
   },
-  mutations: {},
+  mutations: {
+    addSkillPoints(state, payload) {
+      state.user[payload.category].totalPoints += payload.points;
+    },
+    applyFatigue(state, payload) {
+      state.user[payload.category].fatigue += payload.fatigue;
+    },
+  },
   getters: {
+    user(state) {
+      return state.user;
+    },
     push(state) {
       return state.push;
     },

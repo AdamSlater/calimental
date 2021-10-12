@@ -16,14 +16,14 @@
               <skill-details
                 category="Push"
                 skill="push-up"
-                :points="push.current"
+                :points="user.push.totalPoints"
               ></skill-details>
               <h4 class="title is-6 mt-5 mb-1">Fatigue</h4>
               <progress
                 class="progress"
-                :class="fatigueClass(push.capacity)"
-                :value="push.capacity"
-                max="100"
+                :class="fatigueClass(user.push.fatigue)"
+                :value="user.push.fatigue"
+                :max="user.push.maxFatigue"
               >
                 90%
               </progress>
@@ -149,6 +149,7 @@ export default {
       pull: {},
       core: {},
       legs: {},
+      user: {},
     };
   },
   methods: {
@@ -168,6 +169,9 @@ export default {
       this[p.category].current += Number.parseFloat(p.value);
       this[p.category].capacity += Number.parseFloat(p.cost);
     },
+  },
+  created() {
+    this.user = this.$store.getters.user;
   },
 };
 </script>
