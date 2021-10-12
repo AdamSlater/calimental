@@ -9,115 +9,8 @@
           A calisthenics based incremental game
         </p>
         <hr />
-        <div class="px-5 mb-5">
-          <h2 class="title is-4">Stats</h2>
-          <div class="columns">
-            <div class="column">
-              <skill-details
-                category="Push"
-                skill="push-up"
-                :points="user.push.totalPoints"
-              ></skill-details>
-              <h4 class="title is-6 mt-5 mb-1">Fatigue</h4>
-              <progress
-                class="progress"
-                :class="fatigueClass(user.push.fatigue)"
-                :value="user.push.fatigue"
-                :max="user.push.maxFatigue"
-              >
-                90%
-              </progress>
-            </div>
-            <div class="column">
-              <skill-details
-                category="Pull"
-                skill="pull-up"
-                points="10"
-              ></skill-details>
-              <h4 class="title is-6 mt-5 mb-1">Fatigue</h4>
-              <progress
-                class="progress"
-                :class="fatigueClass(42)"
-                value="42"
-                max="100"
-              >
-                90%
-              </progress>
-            </div>
-            <div class="column">
-              <skill-details
-                category="legs"
-                skill="squat"
-                points="10"
-              ></skill-details>
-              <h4 class="title is-6 mt-5 mb-1">Fatigue</h4>
-              <progress
-                class="progress"
-                :class="fatigueClass(90)"
-                value="90"
-                max="100"
-              >
-                90%
-              </progress>
-            </div>
-            <div class="column">
-              <skill-details
-                category="core"
-                skill="plank"
-                points="10"
-              ></skill-details>
-              <h4 class="title is-6 mt-5 mb-1">Fatigue</h4>
-              <progress
-                class="progress"
-                :class="fatigueClass(100)"
-                value="100"
-                max="100"
-              >
-                90%
-              </progress>
-            </div>
-          </div>
-        </div>
-        <div class="tabs is-centered is-boxed">
-          <ul style="border-bottom: 1px solid #dbdbdb">
-            <router-link
-              to="/skills/push"
-              v-slot="{ href, navigate, isActive }"
-              custom
-            >
-              <li :class="[isActive && 'is-active']">
-                <a :href="href" @click="navigate">Push</a>
-              </li>
-            </router-link>
-            <router-link
-              to="/skills/pull"
-              v-slot="{ href, navigate, isActive }"
-              custom
-            >
-              <li :class="[isActive && 'is-active']">
-                <a :href="href" @click="navigate">Pull</a>
-              </li>
-            </router-link>
-            <router-link
-              to="/skills/legs"
-              v-slot="{ href, navigate, isActive }"
-              custom
-            >
-              <li :class="[isActive && 'is-active']">
-                <a :href="href" @click="navigate">Legs</a>
-              </li>
-            </router-link>
-            <router-link
-              to="/skills/core"
-              v-slot="{ href, navigate, isActive }"
-              custom
-            >
-              <li :class="[isActive && 'is-active']">
-                <a :href="href" @click="navigate">Core</a>
-              </li>
-            </router-link>
-          </ul>
-        </div>
+        <skill-details-container :user="user"></skill-details-container>
+        <nav-tabs></nav-tabs>
         <router-view></router-view>
       </div>
     </section>
@@ -125,11 +18,13 @@
 </template>
 
 <script>
-import skillDetails from "./components/SkillDetails.vue";
+import skillDetailsContainer from "./components/SkillDetailsContainer.vue";
+import navTabs from "./components/NavTabs.vue";
 
 export default {
   components: {
-    skillDetails,
+    skillDetailsContainer,
+    navTabs,
   },
   data() {
     return {
@@ -164,10 +59,6 @@ export default {
         default:
           return "";
       }
-    },
-    incrementSkill(p) {
-      this[p.category].current += Number.parseFloat(p.value);
-      this[p.category].capacity += Number.parseFloat(p.cost);
     },
   },
   created() {
