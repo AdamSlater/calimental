@@ -2,14 +2,18 @@
   <div>
     <h3 class="title is-5">{{ category | ucCase }}</h3>
     <dl>
-      <dt>Max Skill</dt>
-      <dd>
-        <code>{{ skill }}</code>
-      </dd>
-      <dt>Total Points</dt>
-      <dd>
-        <code>{{ points }}</code>
-      </dd>
+      <div>
+        <dt>Max Skill</dt>
+        <dd>
+          <code>{{ skill }}</code>
+        </dd>
+      </div>
+      <div>
+        <dt>Total Points</dt>
+        <dd>
+          <code>{{ points }}</code>
+        </dd>
+      </div>
     </dl>
   </div>
 </template>
