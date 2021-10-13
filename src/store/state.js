@@ -5,6 +5,21 @@ export default {
       fatigue: 0,
       maxFatigue: 100,
     },
+    pull: {
+      totalPoints: 0,
+      fatigue: 0,
+      maxFatigue: 100,
+    },
+    legs: {
+      totalPoints: 0,
+      fatigue: 0,
+      maxFatigue: 100,
+    },
+    core: {
+      totalPoints: 0,
+      fatigue: 0,
+      maxFatigue: 100,
+    },
   },
   push: [
     {

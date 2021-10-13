@@ -5,4 +5,7 @@ export default {
   applyFatigue(state, payload) {
     state.user[payload.category].fatigue += payload.fatigue;
   },
+  upgradeFatigue(state, payload) {
+    state.user[payload.category].maxFatigue += payload.fatigue;
+  },
 };

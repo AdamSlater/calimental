@@ -19,6 +19,7 @@
         </progress>
         <skill-reset-button
           skill="push"
+          :user="user"
           @reset-skill="resetSkill"
         ></skill-reset-button>
       </div>
@@ -37,7 +38,7 @@
         >
           90%
         </progress>
-        <skill-reset-button></skill-reset-button>
+        <skill-reset-button skill="pull" :user="user"></skill-reset-button>
       </div>
       <div class="column">
         <skill-details
@@ -54,7 +55,7 @@
         >
           90%
         </progress>
-        <skill-reset-button></skill-reset-button>
+        <skill-reset-button skill="legs" :user="user"></skill-reset-button>
       </div>
       <div class="column">
         <skill-details
@@ -71,7 +72,7 @@
         >
           90%
         </progress>
-        <skill-reset-button></skill-reset-button>
+        <skill-reset-button skill="core" :user="user"></skill-reset-button>
       </div>
     </div>
   </div>
