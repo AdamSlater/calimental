@@ -28,19 +28,7 @@ export default {
   },
   data() {
     return {
-      push: {
-        current: 0,
-        capacity: 0,
-        skills: [
-          {
-            difficulty: 0,
-            name: "Incline Push Up",
-            skillPerClick: 0.5,
-            costPerClick: 10,
-          },
-          {},
-        ],
-      },
+      push: {},
       pull: {},
       core: {},
       legs: {},
