@@ -17,6 +17,7 @@
         >
           90%
         </progress>
+        <skill-reset-button></skill-reset-button>
       </div>
       <div class="column">
         <skill-details
@@ -33,6 +34,7 @@
         >
           90%
         </progress>
+        <skill-reset-button></skill-reset-button>
       </div>
       <div class="column">
         <skill-details
@@ -49,6 +51,7 @@
         >
           90%
         </progress>
+        <skill-reset-button></skill-reset-button>
       </div>
       <div class="column">
         <skill-details
@@ -65,6 +68,7 @@
         >
           90%
         </progress>
+        <skill-reset-button></skill-reset-button>
       </div>
     </div>
   </div>
@@ -72,11 +76,13 @@
 
 <script>
 import skillDetails from "./SkillDetails.vue";
+import skillResetButton from "./SkillResetButton.vue";
 
 export default {
   props: ["user"],
   components: {
     skillDetails,
+    skillResetButton,
   },
   methods: {
     fatigueClass(val) {
