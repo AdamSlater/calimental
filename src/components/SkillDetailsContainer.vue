@@ -17,7 +17,10 @@
         >
           90%
         </progress>
-        <skill-reset-button></skill-reset-button>
+        <skill-reset-button
+          skill="push"
+          @reset-skill="resetSkill"
+        ></skill-reset-button>
       </div>
       <div class="column">
         <skill-details
@@ -96,6 +99,9 @@ export default {
         default:
           return "";
       }
+    },
+    resetSkill(skill) {
+      this.user[skill].fatigue = 0;
     },
   },
 };

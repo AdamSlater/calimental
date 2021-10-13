@@ -31,21 +31,41 @@
         cost="10"
         @increment-skill="incrementSkill"
       ></skill-button> -->
-      <button
-        class="button is-rounded"
-        :class="skillClass(skill.difficulty)"
-        v-for="skill in pushSkills"
-        v-text="skill.name"
-        :key="skill.index"
-      ></button>
+      <div v-if="false">
+        <button
+          class="button is-rounded"
+          :class="skillClass(skill.difficulty)"
+          v-for="skill in pushSkills"
+          v-text="skill.name"
+          :key="skill.index"
+        ></button>
+      </div>
       <skill-button
         category="push"
         index="0"
         level="is-primary"
         name="Incline Push Up"
-        value="0.5"
-        cost="10"
-        @increment-skill="incrementSkill('push', 0.5, 10)"
+        value="1"
+        cost="20"
+        @increment-skill="incrementSkill('push', 1, 20)"
+      ></skill-button>
+      <skill-button
+        category="push"
+        index="0"
+        level="is-primary"
+        name="Push Up"
+        value="1.5"
+        cost="40"
+        @increment-skill="incrementSkill('push', 1.5, 40)"
+      ></skill-button>
+      <skill-button
+        category="push"
+        index="0"
+        level="is-primary"
+        name="Decline Push Up"
+        value="2.25"
+        cost="80"
+        @increment-skill="incrementSkill('push', 2.25, 80)"
       ></skill-button>
     </div>
     <div class="vertical-button-group" v-if="$route.params.skill == 'pull'">
