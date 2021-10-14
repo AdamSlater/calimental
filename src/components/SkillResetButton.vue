@@ -13,12 +13,10 @@
 
 <script>
 export default {
-  props: ["user", "skill"],
+  props: ["skill"],
   computed: {
     checkFatigue() {
-      return !(
-        this.user[this.skill].fatigue >= this.user[this.skill].maxFatigue
-      );
+      return !(this.skill.fatigue >= this.skill.maxFatigue);
     },
   },
   methods: {

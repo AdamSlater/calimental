@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3 class="title is-5">{{ category | ucCase }}</h3>
+    <h3 class="title is-5">{{ category | capitalize }}</h3>
     <dl>
       <div>
         <dt>Max Skill</dt>
@@ -22,7 +22,7 @@
 export default {
   props: ["category", "skill", "points"],
   filters: {
-    ucCase(msg) {
+    capitalize(msg) {
       return msg.charAt(0).toUpperCase() + msg.slice(1);
     },
   },

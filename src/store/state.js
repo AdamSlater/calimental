@@ -1,25 +1,31 @@
 export default {
   user: {
-    push: {
-      totalPoints: 0,
-      fatigue: 0,
-      maxFatigue: 100,
-    },
-    pull: {
-      totalPoints: 0,
-      fatigue: 0,
-      maxFatigue: 100,
-    },
-    legs: {
-      totalPoints: 0,
-      fatigue: 0,
-      maxFatigue: 100,
-    },
-    core: {
-      totalPoints: 0,
-      fatigue: 0,
-      maxFatigue: 100,
-    },
+    skills: [
+      {
+        category: "push",
+        totalPoints: 0,
+        fatigue: 0,
+        maxFatigue: 100,
+      },
+      {
+        category: "pull",
+        totalPoints: 0,
+        fatigue: 0,
+        maxFatigue: 100,
+      },
+      {
+        category: "legs",
+        totalPoints: 0,
+        fatigue: 0,
+        maxFatigue: 100,
+      },
+      {
+        category: "core",
+        totalPoints: 0,
+        fatigue: 0,
+        maxFatigue: 100,
+      },
+    ],
   },
   push: [
     {

@@ -28,26 +28,8 @@ export default {
   },
   data() {
     return {
-      push: {},
-      pull: {},
-      core: {},
-      legs: {},
       user: {},
     };
-  },
-  methods: {
-    fatigueClass(val) {
-      switch (true) {
-        case val <= 50:
-          return { "is-success": true };
-        case val <= 75:
-          return { "is-warning": true };
-        case val < 100:
-          return "is-danger";
-        default:
-          return "";
-      }
-    },
   },
   created() {
     this.user = this.$store.getters.user;

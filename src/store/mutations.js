@@ -1,11 +1,14 @@
 export default {
   addSkillPoints(state, payload) {
-    state.user[payload.category].totalPoints += payload.points;
+    const skill = state.user.skills.find((s) => s.category == payload.category);
+    skill.totalPoints += payload.points;
   },
   applyFatigue(state, payload) {
-    state.user[payload.category].fatigue += payload.fatigue;
+    const skill = state.user.skills.find((s) => s.category == payload.category);
+    skill.fatigue += payload.fatigue;
   },
   upgradeFatigue(state, payload) {
-    state.user[payload.category].maxFatigue += payload.fatigue;
+    const skill = state.user.skills.find((s) => s.category == payload.category);
+    skill.maxFatigue += payload.fatigue;
   },
 };
