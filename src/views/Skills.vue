@@ -79,10 +79,11 @@ export default {
     };
   },
   methods: {
-    addSkillPoints(category, points) {
+    addSkillPoints(category, points, fatigue) {
       this.$store.commit("addSkillPoints", {
         category,
         points,
+        fatigue,
       });
     },
     applyFatigue(category, fatigue) {
@@ -92,7 +93,7 @@ export default {
       });
     },
     incrementSkill(category, points, fatigue) {
-      this.addSkillPoints(category, points);
+      this.addSkillPoints(category, points, fatigue);
       this.applyFatigue(category, fatigue);
     },
     skillClass(difficulty) {
