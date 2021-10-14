@@ -1,5 +1,8 @@
 <template>
   <div>
+    <p class="mb-2 is-italic has-text-centered">
+      Click on a button to perform an exercise.
+    </p>
     <div class="vertical-button-group" v-if="$route.params.skill == 'push'">
       <skill-button
         category="push"
@@ -13,6 +16,12 @@
         "
         v-for="(skill, index) in pushSkills"
         :key="index"
+        v-show="
+          index == 0
+            ? true
+            : user.skills.find((s) => s.category == 'push').totalPoints >=
+              24 * index
+        "
       ></skill-button>
     </div>
     <div class="vertical-button-group" v-if="$route.params.skill == 'pull'">
@@ -28,6 +37,12 @@
         "
         v-for="(skill, index) in pullSkills"
         :key="index"
+        v-show="
+          index == 0
+            ? true
+            : user.skills.find((s) => s.category == 'pull').totalPoints >=
+              24 * index
+        "
       ></skill-button>
     </div>
     <div class="vertical-button-group" v-if="$route.params.skill == 'legs'">
@@ -43,6 +58,12 @@
         "
         v-for="(skill, index) in legsSkills"
         :key="index"
+        v-show="
+          index == 0
+            ? true
+            : user.skills.find((s) => s.category == 'legs').totalPoints >=
+              24 * index
+        "
       ></skill-button>
     </div>
     <div class="vertical-button-group" v-if="$route.params.skill == 'core'">
@@ -58,6 +79,12 @@
         "
         v-for="(skill, index) in coreSkills"
         :key="index"
+        v-show="
+          index == 0
+            ? true
+            : user.skills.find((s) => s.category == 'core').totalPoints >=
+              24 * index
+        "
       ></skill-button>
     </div>
   </div>
@@ -72,6 +99,7 @@ export default {
   },
   data() {
     return {
+      user: {},
       pushSkills: [],
       pullSkills: [],
       legsSkills: [],
@@ -112,6 +140,7 @@ export default {
     },
   },
   mounted() {
+    this.user = this.$store.getters.user;
     this.pushSkills = this.$store.getters.push;
     this.pullSkills = this.$store.getters.pull;
     this.legsSkills = this.$store.getters.legs;
