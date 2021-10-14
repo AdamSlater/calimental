@@ -5,7 +5,7 @@
       <div class="column" v-for="(skill, index) in user.skills" :key="index">
         <skill-details
           :category="skill.category"
-          skill="todo"
+          :skill="skillName(skill.category)"
           :points="skill.totalPoints"
         ></skill-details>
         <h4 class="title is-6 mt-5 mb-1">Fatigue</h4>
@@ -47,6 +47,9 @@ export default {
         default:
           return "";
       }
+    },
+    skillName(category) {
+      return this.$store.getters.skillName(category, 0);
     },
     resetSkill(skill) {
       skill.fatigue = 0;

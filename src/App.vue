@@ -38,12 +38,8 @@ export default {
 </script>
 
 <style lang="scss">
-dt,
-dd {
-  display: inline-block;
-}
-
 dt {
+  display: inline-block;
   font-weight: bolder;
 }
 
