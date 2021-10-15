@@ -1,7 +1,10 @@
 <template>
-  <button class="button is-rounded" :class="level" @click="incrementSkill">
-    {{ name }}
-  </button>
+  <button
+    class="button is-rounded"
+    :class="level"
+    @click="incrementSkill"
+    v-html="name"
+  ></button>
 </template>
 
 <script>

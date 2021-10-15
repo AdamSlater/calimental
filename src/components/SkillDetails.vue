@@ -5,7 +5,7 @@
       <div>
         <dt>Max Skill</dt>
         <dd>
-          <code>{{ skill }}</code>
+          <code v-html="skill"></code>
         </dd>
       </div>
       <div>
