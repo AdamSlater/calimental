@@ -120,9 +120,24 @@ export default {
         fatigue,
       });
     },
+    upgradeFatigue(category, fatigue) {
+      this.$store.commit("upgradeFatigue", {
+        category,
+        fatigue,
+      });
+    },
     incrementSkill(category, points, fatigue) {
       this.addSkillPoints(category, points, fatigue);
       this.applyFatigue(category, fatigue);
+
+      const skill = this.user.skills.find((s) => s.category == category);
+
+      if (skill.fatigue / skill.maxFatigue > 0.7) {
+        const isGoingToUpgrade = Math.round(Math.random() * 10) < 3;
+        if (isGoingToUpgrade) {
+          this.upgradeFatigue(category, fatigue / 2);
+        }
+      }
     },
     skillClass(difficulty) {
       switch (difficulty) {
