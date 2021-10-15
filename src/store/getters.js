@@ -2,6 +2,12 @@ export default {
   user(state) {
     return state.user;
   },
+  skillName(state) {
+    return (category, index) => state[category][index].name;
+  },
+  skillLength(state) {
+    return (category) => state[category].length;
+  },
   push(state) {
     return state.push;
   },

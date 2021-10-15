@@ -16,7 +16,7 @@ export default {
   props: ["skill"],
   computed: {
     checkFatigue() {
-      return !(this.skill.fatigue >= this.skill.maxFatigue);
+      return this.skill.fatigue == 0;
     },
   },
   methods: {

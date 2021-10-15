@@ -1,5 +1,8 @@
 <template>
   <div>
+    <p class="mb-2 is-italic has-text-centered">
+      Click on a button to perform an exercise.
+    </p>
     <div class="vertical-button-group" v-if="$route.params.skill == 'push'">
       <skill-button
         category="push"
@@ -13,6 +16,12 @@
         "
         v-for="(skill, index) in pushSkills"
         :key="index"
+        v-show="
+          index == 0
+            ? true
+            : user.skills.find((s) => s.category == 'push').totalPoints >=
+              24 * index
+        "
       ></skill-button>
     </div>
     <div class="vertical-button-group" v-if="$route.params.skill == 'pull'">
@@ -28,6 +37,12 @@
         "
         v-for="(skill, index) in pullSkills"
         :key="index"
+        v-show="
+          index == 0
+            ? true
+            : user.skills.find((s) => s.category == 'pull').totalPoints >=
+              24 * index
+        "
       ></skill-button>
     </div>
     <div class="vertical-button-group" v-if="$route.params.skill == 'legs'">
@@ -43,6 +58,12 @@
         "
         v-for="(skill, index) in legsSkills"
         :key="index"
+        v-show="
+          index == 0
+            ? true
+            : user.skills.find((s) => s.category == 'legs').totalPoints >=
+              24 * index
+        "
       ></skill-button>
     </div>
     <div class="vertical-button-group" v-if="$route.params.skill == 'core'">
@@ -58,6 +79,12 @@
         "
         v-for="(skill, index) in coreSkills"
         :key="index"
+        v-show="
+          index == 0
+            ? true
+            : user.skills.find((s) => s.category == 'core').totalPoints >=
+              24 * index
+        "
       ></skill-button>
     </div>
   </div>
@@ -72,6 +99,7 @@ export default {
   },
   data() {
     return {
+      user: {},
       pushSkills: [],
       pullSkills: [],
       legsSkills: [],
@@ -79,10 +107,11 @@ export default {
     };
   },
   methods: {
-    addSkillPoints(category, points) {
+    addSkillPoints(category, points, fatigue) {
       this.$store.commit("addSkillPoints", {
         category,
         points,
+        fatigue,
       });
     },
     applyFatigue(category, fatigue) {
@@ -91,9 +120,24 @@ export default {
         fatigue,
       });
     },
+    upgradeFatigue(category, fatigue) {
+      this.$store.commit("upgradeFatigue", {
+        category,
+        fatigue,
+      });
+    },
     incrementSkill(category, points, fatigue) {
-      this.addSkillPoints(category, points);
+      this.addSkillPoints(category, points, fatigue);
       this.applyFatigue(category, fatigue);
+
+      const skill = this.user.skills.find((s) => s.category == category);
+
+      if (skill.fatigue / skill.maxFatigue > 0.7) {
+        const isGoingToUpgrade = Math.round(Math.random() * 10) < 3;
+        if (isGoingToUpgrade) {
+          this.upgradeFatigue(category, fatigue / 2);
+        }
+      }
     },
     skillClass(difficulty) {
       switch (difficulty) {
@@ -111,6 +155,7 @@ export default {
     },
   },
   mounted() {
+    this.user = this.$store.getters.user;
     this.pushSkills = this.$store.getters.push;
     this.pullSkills = this.$store.getters.pull;
     this.legsSkills = this.$store.getters.legs;
