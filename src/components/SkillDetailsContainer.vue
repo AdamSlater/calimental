@@ -49,7 +49,23 @@ export default {
       }
     },
     skillName(category) {
-      return this.$store.getters.skillName(category, 0);
+      let index = 0;
+
+      const totalPoints = this.user.skills.find(
+        (s) => s.category == category
+      ).totalPoints;
+      const maxEligibleIndex = Math.floor(totalPoints / 24);
+      const skillLength = this.$store.getters.skillLength(category);
+
+      if (maxEligibleIndex < skillLength) {
+        index = maxEligibleIndex;
+      }
+
+      if (maxEligibleIndex == skillLength) {
+        index = skillLength - 1;
+      }
+
+      return this.$store.getters.skillName(category, index);
     },
     resetSkill(skill) {
       skill.fatigue = 0;
