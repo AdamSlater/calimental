@@ -11,7 +11,7 @@
       <div>
         <dt>Total Points</dt>
         <dd>
-          <code>{{ points }}</code>
+          <code>{{ points | decFmt }}</code>
         </dd>
       </div>
     </dl>
@@ -24,6 +24,9 @@ export default {
   filters: {
     capitalize(msg) {
       return msg.charAt(0).toUpperCase() + msg.slice(1);
+    },
+    decFmt(num) {
+      return num.toFixed(2);
     },
   },
 };
