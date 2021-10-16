@@ -9,10 +9,14 @@
         index="0"
         :level="skillClass(skill.difficulty)"
         :name="skill.name"
-        :value="index == 0 ? 1 : 1.5 ** index"
-        :cost="20 * 2 ** index"
+        :value="index == 0 ? 1 : 1.92 ** index"
+        :cost="20 * 1.6 ** index"
         @increment-skill="
-          incrementSkill('push', index == 0 ? 1 : 1.5 ** index, 20 * 2 ** index)
+          incrementSkill(
+            'push',
+            index == 0 ? 1 : 1.92 ** index,
+            20 * 1.6 ** index
+          )
         "
         v-for="(skill, index) in pushSkills"
         :key="index"
@@ -30,10 +34,14 @@
         index="0"
         :level="skillClass(skill.difficulty)"
         :name="skill.name"
-        :value="index == 0 ? 1 : 1.5 ** index"
-        :cost="20 * 2 ** index"
+        :value="index == 0 ? 1 : 1.92 ** index"
+        :cost="20 * 1.6 ** index"
         @increment-skill="
-          incrementSkill('pull', index == 0 ? 1 : 1.5 ** index, 20 * 2 ** index)
+          incrementSkill(
+            'pull',
+            index == 0 ? 1 : 1.92 ** index,
+            20 * 1.6 ** index
+          )
         "
         v-for="(skill, index) in pullSkills"
         :key="index"
@@ -51,10 +59,14 @@
         index="0"
         :level="skillClass(skill.difficulty)"
         :name="skill.name"
-        :value="index == 0 ? 1 : 1.5 ** index"
-        :cost="20 * 2 ** index"
+        :value="index == 0 ? 1 : 1.92 ** index"
+        :cost="20 * 1.6 ** index"
         @increment-skill="
-          incrementSkill('legs', index == 0 ? 1 : 1.5 ** index, 20 * 2 ** index)
+          incrementSkill(
+            'legs',
+            index == 0 ? 1 : 1.92 ** index,
+            20 * 1.6 ** index
+          )
         "
         v-for="(skill, index) in legsSkills"
         :key="index"
@@ -72,10 +84,14 @@
         index="0"
         :level="skillClass(skill.difficulty)"
         :name="skill.name"
-        :value="index == 0 ? 1 : 1.5 ** index"
-        :cost="20 * 2 ** index"
+        :value="index == 0 ? 1 : 1.92 ** index"
+        :cost="20 * 1.6 ** index"
         @increment-skill="
-          incrementSkill('core', index == 0 ? 1 : 1.5 ** index, 20 * 2 ** index)
+          incrementSkill(
+            'core',
+            index == 0 ? 1 : 1.92 ** index,
+            20 * 1.6 ** index
+          )
         "
         v-for="(skill, index) in coreSkills"
         :key="index"
