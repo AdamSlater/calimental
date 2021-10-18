@@ -10,7 +10,7 @@
         </p>
         <hr />
         <skill-details-container :user="user"></skill-details-container>
-        <nav-tabs></nav-tabs>
+        <nav-tabs :skills="skills"></nav-tabs>
         <router-view></router-view>
       </div>
     </section>
@@ -29,10 +29,12 @@ export default {
   data() {
     return {
       user: {},
+      skills: [],
     };
   },
   created() {
     this.user = this.$store.getters.user;
+    this.skills = this.user.skills.map((skill) => skill.category);
   },
 };
 </script>
