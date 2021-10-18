@@ -9,23 +9,14 @@
         index="0"
         :level="skillClass(skill.difficulty)"
         :name="skill.name"
-        :value="index == 0 ? 1 : 1.92 ** index"
-        :cost="20 * 1.6 ** index"
+        :value="calcSkillValue(index)"
+        :cost="calcSkillCost(index)"
         @increment-skill="
-          incrementSkill(
-            'push',
-            index == 0 ? 1 : 1.92 ** index,
-            20 * 1.6 ** index
-          )
+          incrementSkill('push', calcSkillValue(index), calcSkillCost(index))
         "
         v-for="(skill, index) in pushSkills"
         :key="index"
-        v-show="
-          index == 0
-            ? true
-            : user.skills.find((s) => s.category == 'push').totalPoints >=
-              24 * index
-        "
+        v-show="checkSkillAccess(index, 'push')"
       ></skill-button>
     </div>
     <div class="vertical-button-group" v-if="$route.params.skill == 'pull'">
@@ -34,23 +25,14 @@
         index="0"
         :level="skillClass(skill.difficulty)"
         :name="skill.name"
-        :value="index == 0 ? 1 : 1.92 ** index"
-        :cost="20 * 1.6 ** index"
+        :value="calcSkillValue(index)"
+        :cost="calcSkillCost(index)"
         @increment-skill="
-          incrementSkill(
-            'pull',
-            index == 0 ? 1 : 1.92 ** index,
-            20 * 1.6 ** index
-          )
+          incrementSkill('pull', calcSkillValue(index), calcSkillCost(index))
         "
         v-for="(skill, index) in pullSkills"
         :key="index"
-        v-show="
-          index == 0
-            ? true
-            : user.skills.find((s) => s.category == 'pull').totalPoints >=
-              24 * index
-        "
+        v-show="checkSkillAccess(index, 'pull')"
       ></skill-button>
     </div>
     <div class="vertical-button-group" v-if="$route.params.skill == 'legs'">
@@ -59,23 +41,14 @@
         index="0"
         :level="skillClass(skill.difficulty)"
         :name="skill.name"
-        :value="index == 0 ? 1 : 1.92 ** index"
-        :cost="20 * 1.6 ** index"
+        :value="calcSkillValue(index)"
+        :cost="calcSkillCost(index)"
         @increment-skill="
-          incrementSkill(
-            'legs',
-            index == 0 ? 1 : 1.92 ** index,
-            20 * 1.6 ** index
-          )
+          incrementSkill('legs', calcSkillValue(index), calcSkillCost(index))
         "
         v-for="(skill, index) in legsSkills"
         :key="index"
-        v-show="
-          index == 0
-            ? true
-            : user.skills.find((s) => s.category == 'legs').totalPoints >=
-              24 * index
-        "
+        v-show="checkSkillAccess(index, 'legs')"
       ></skill-button>
     </div>
     <div class="vertical-button-group" v-if="$route.params.skill == 'core'">
@@ -84,23 +57,14 @@
         index="0"
         :level="skillClass(skill.difficulty)"
         :name="skill.name"
-        :value="index == 0 ? 1 : 1.92 ** index"
-        :cost="20 * 1.6 ** index"
+        :value="calcSkillValue(index)"
+        :cost="calcSkillCost(index)"
         @increment-skill="
-          incrementSkill(
-            'core',
-            index == 0 ? 1 : 1.92 ** index,
-            20 * 1.6 ** index
-          )
+          incrementSkill('core', calcSkillValue(index), calcSkillCost(index))
         "
         v-for="(skill, index) in coreSkills"
         :key="index"
-        v-show="
-          index == 0
-            ? true
-            : user.skills.find((s) => s.category == 'core').totalPoints >=
-              24 * index
-        "
+        v-show="checkSkillAccess(index, 'core')"
       ></skill-button>
     </div>
   </div>
@@ -168,6 +132,18 @@ export default {
         default:
           return "";
       }
+    },
+    calcSkillCost(index) {
+      return 20 * 1.6 ** index;
+    },
+    calcSkillValue(index) {
+      return index == 0 ? 1 : 1.92 ** index;
+    },
+    checkSkillAccess(index, category) {
+      return index == 0
+        ? true
+        : this.user.skills.find((s) => s.category == category).totalPoints >=
+            24 * index;
     },
   },
   mounted() {
