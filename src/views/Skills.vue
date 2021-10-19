@@ -5,7 +5,7 @@
     </p>
     <div
       class="vertical-button-group"
-      v-for="(category, index) in Object.keys(this.skills)"
+      v-for="(category, index) in Object.keys(skills)"
       :key="index"
     >
       <div v-if="$route.params.skill == category">
@@ -101,7 +101,7 @@ export default {
             24 * index;
     },
   },
-  mounted() {
+  created() {
     this.user = this.$store.getters.user;
 
     let skills = this.user.skills;
